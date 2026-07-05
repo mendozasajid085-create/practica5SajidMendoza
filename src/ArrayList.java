@@ -4,22 +4,19 @@ import java.util.Iterator;
 // E representa el tipo de dato que guardara la lista.
 // Implementa la interfaz Lista<E>.
 public class ArrayList<E> implements Lista<E> {
-
     // Tamanio maximo inicial por defecto del arreglo
     private static final int MAX = 5;
-
     // Indica cuantos elementos tiene actualmente la lista
     private int indice = 0;
-
     // Arreglo donde se almacenan los datos
     private Object[] datos = null; 
+
 
     // Constructor por defecto.
     // Crea una lista con tamanio inicial MAX.
     public ArrayList() {
         this(MAX);
     }
-
     // Constructor que permite indicar el tamanio inicial del arreglo.
     public ArrayList(int tam) {
 
@@ -42,30 +39,25 @@ public class ArrayList<E> implements Lista<E> {
 
     // Agrega un elemento al final de la lista.
     @Override
+    /*
+    Si el arreglo ya casi esta lleno, se crea uno mas grande.
+    Nuevo arreglo con crecimiento del 50%.
+    Copia los datos del arreglo viejo al nuevo.
+    Limpia las referencias del arreglo anterior.
+    El arreglo principal ahora apunta al arreglo nuevo.
+    Se guarda el elemento en la posicion actual.
+    Se incrementa el numero de elementos.
+    */
+
     public void agregarFinal(E e) {
-
         Object[] aux = null;
-
-        // Si el arreglo ya casi esta lleno, se crea uno mas grande.
         if (!(indice < datos.length - 1)) {
-
-            // Nuevo arreglo con crecimiento del 50%.
             aux = new Object[datos.length + datos.length / 2];
-
-            // Copia los datos del arreglo viejo al nuevo.
             System.arraycopy(datos, 0, aux, 0, datos.length);
-
-            // Limpia las referencias del arreglo anterior.
             asegurarGC();
-
-            // El arreglo principal ahora apunta al arreglo nuevo.
             datos = aux;
         }
-
-        // Se guarda el elemento en la posicion actual.
         datos[indice] = e;
-
-        // Se incrementa el numero de elementos.
         indice++;
     }
 
@@ -250,4 +242,20 @@ public class ArrayList<E> implements Lista<E> {
             }
         };
     }
+    @Override
+    public E eliminarElemento(){
+        if (esVacia()){
+            System.out.println("La lista ya esta vacia.");
+            return null;
+        }
+
+        @SuppressWarnings("unchecked")
+        E elementoEliminado = (E) datos[indice-1];
+    //Guardamos una copia de el dato a eliminar
+        datos[indice-1]=null;
+        indice--;
+        System.out.println(".(Se elimino el ultimo elemento agregado)");
+        return elementoEliminado;
+    }
+
 }
