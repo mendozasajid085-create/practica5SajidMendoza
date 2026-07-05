@@ -60,7 +60,10 @@ public class ArrayList<E> implements Lista<E> {
         datos[indice] = e;
         indice++;
     }
-
+    @Override
+    public void agregarElemento(E e){
+        agregarFinal(e);
+    }
     // Agrega un elemento al inicio de la lista.
     @Override
     public void agregarInicio(E e) {
