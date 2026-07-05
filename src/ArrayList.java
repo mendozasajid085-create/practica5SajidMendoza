@@ -279,13 +279,22 @@ public class ArrayList<E> implements Lista<E> {
         if (posicion>=indice || posicion<0){
             throw new IndexOutOfBoundsException("Posicion invalida: "+ posicion);
         }
-        @SuppressWarnings("unchecked");
+        @SuppressWarnings("unchecked")
         E elementoEliminado= (E) datos[posicion];
             System.arraycopy(datos, posicion+1, datos, posicion, indice-posicion-1);
         indice--;
         datos[indice]=null;
         return elementoEliminado;
     }
-
+    @Override
+    public E consultar(int posicion){
+        if(posicion>indice || posicion<0){
+            throw new IndexOutOfBoundsException("Posicion invalida: "+ posicion);
+        }
+        @SuppressWarnings("unchecked")
+        E elemento= (E) datos[posicion];
+        return elemento;
+    }
+    
 
 }
