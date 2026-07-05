@@ -257,5 +257,17 @@ public class ArrayList<E> implements Lista<E> {
         System.out.println(".(Se elimino el ultimo elemento agregado)");
         return elementoEliminado;
     }
+    public E eliminarElementoInicio(){
+        if (esVacia()){
+            System.out.println(".(La lista esta vacia)");
+            return null;
+        }
+        @SuppressWarnings("unchecked")
+        E elementoEliminado=(E) datos[0];
+        datos[0]=null;
+        indice--;
+        return elementoEliminado;
+    }
+    
 
 }
