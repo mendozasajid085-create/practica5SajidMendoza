@@ -257,6 +257,7 @@ public class ArrayList<E> implements Lista<E> {
         System.out.println(".(Se elimino el ultimo elemento agregado)");
         return elementoEliminado;
     }
+    @Override
     public E eliminarElementoInicio(){
         if (esVacia()){
             System.out.println(".(La lista esta vacia)");
@@ -264,10 +265,27 @@ public class ArrayList<E> implements Lista<E> {
         }
         @SuppressWarnings("unchecked")
         E elementoEliminado=(E) datos[0];
-        datos[0]=null;
+        System.arraycopy(datos, 1, datos, 0, indice-1);
         indice--;
+        datos[indice]=null;
         return elementoEliminado;
     }
-    
+    @Override
+    public E eliminarElementoFinal(){
+        return eliminarElemento();
+    }
+    @Override
+    public E eliminarElementoPosicion(int posicion){
+        if (posicion>=indice || posicion<0){
+            throw new IndexOutOfBoundsException("Posicion invalida: "+ posicion);
+        }
+        @SuppressWarnings("unchecked");
+        E elementoEliminado= (E) datos[posicion];
+            System.arraycopy(datos, posicion+1, datos, posicion, indice-posicion-1);
+        indice--;
+        datos[indice]=null;
+        return elementoEliminado;
+    }
+
 
 }
