@@ -61,7 +61,7 @@ public interface Lista<E> extends Iterable<E> {
 	/**
 	 * Regresa la coleccion como un arreglo
 	 */
-	public E[]  convertirArreglo();
+	public Object[]  convertirArreglo();
 	
 	/**
 	 * Regresa el elemento en una posicion particular

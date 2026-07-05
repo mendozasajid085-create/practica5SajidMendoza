@@ -295,6 +295,11 @@ public class ArrayList<E> implements Lista<E> {
         E elemento= (E) datos[posicion];
         return elemento;
     }
-    
+    @Override
+    public Object[] convertirArreglo(){
+        Object[] arregloLimpio=new Object[indice];
+        System.arraycopy(datos, 0, arregloLimpio, 0, indice);
+        return arregloLimpio;
+    }
 
 }
