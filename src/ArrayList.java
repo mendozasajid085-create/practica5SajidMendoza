@@ -291,7 +291,7 @@ public class ArrayList<E> implements Lista<E> {
     }
     @Override
     public E consultar(int posicion){
-        if(posicion>indice || posicion<0){
+        if(posicion>=indice || posicion<0){
             throw new IndexOutOfBoundsException("Posicion invalida: "+ posicion);
         }
         @SuppressWarnings("unchecked")
