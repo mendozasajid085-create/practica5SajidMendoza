@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("=== PRUEBAS DE ESCRITORIO PARA ArrayList ===");
-        
+        //https://garticphone.com/es/001765C2
         // 1. Probar constructores y esVacia
         Lista<String> lista = new ArrayList<>();
         System.out.println("\n--- Creacion de la lista ---");
